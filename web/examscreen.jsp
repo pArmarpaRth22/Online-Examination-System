@@ -71,7 +71,7 @@ nav {
                       <option name="iot" value="IoT">IoT</option>         
                   </select>        
                 </p>
-                <input type="submit" value="Start Exam" style="color:red;"><br/><br/>
+                <input type="submit" onclick="startExam()" value="Start Exam"  style="color:red;"><br/><br/>
                 </div>
                 </div>
                 <div class="container">
@@ -98,7 +98,43 @@ nav {
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script>
+      <script type="text/javascript">
+            function startExam() {
+                goFullScreen(); // Trigger full-screen mode
+//                document.forms[0].submit(); // Submit the form to start the exam
+            }
 
+            // Function to enter full-screen mode
+            function goFullScreen() {
+                var elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen().then(function() {
+                        document.getElementById("examForm").submit(); // Submit the form after entering full-screen mode
+                    });
+                } else if (elem.mozRequestFullScreen) { // Firefox
+                    elem.mozRequestFullScreen().then(function() {
+                        document.getElementById("examForm").submit();
+                    });
+                } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                    elem.webkitRequestFullscreen().then(function() {
+                        document.getElementById("examForm").submit();
+                    });
+                } else if (elem.msRequestFullscreen) { // IE/Edge
+                    elem.msRequestFullscreen().then(function() {
+                        document.getElementById("examForm").submit();
+                    });
+                }
+            }
+            
+              
+
+            // Detect tab visibility change
+//            document.addEventListener('visibilitychange', function() {
+//                if (document.hidden) {
+//                    alert("You have switched tabs! Please return to the quiz.");
+//                }
+//            });
+        </script>
     </form>
 </body>
 </html>

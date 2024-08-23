@@ -89,6 +89,8 @@
         </form>
     </body>
     <script type="text/javascript">
+        
+        
         var count = 1000;
 
         function countDown(){
@@ -102,5 +104,13 @@
             }
         }
         countDown();
+        
+        
+         document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    alert("You have switched tabs! Please return to the quiz.");
+                }
+            });
     </script>
+    
 </html>
